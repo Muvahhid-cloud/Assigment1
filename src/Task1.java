@@ -15,7 +15,7 @@ public class Task1 {
      * Space Complexity: O(n) – due to the recursive call stack.
      */
     public static int findMin(int[] arr, int n) {
-        // Base case: if the array has only one element, return it
+        // Base case: If the array has only one element, return it
         if (n == 1) {
             return arr[0];
         }
@@ -23,25 +23,35 @@ public class Task1 {
         // Recursive case: find the minimum of the first n-1 elements
         int minOfRest = findMin(arr, n - 1);
 
-        // Compare the last element (arr[n - 1]) with the minimum of the rest
+        // Compare the last element with the minimum of the rest
         return Math.min(arr[n - 1], minOfRest);
     }
 
     /**
-     * Main method: Entry point of Task 1.
-     * Defines an array, calls the findMin function, and prints the result.
+     * Main method – Entry point of the program.
+     * It prepares the array, calls the function, and prints the result with time taken.
      */
     public static void main(String[] args) {
-        // Sample array of integers
+        // Define the array of numbers
         int[] array = {10, 1, 32, 3, 45};
 
-        // Get the number of elements
+        // Get number of elements in the array
         int n = array.length;
 
-        // Call the recursive function to find the minimum
+        // Start time before the function runs
+        long startTime = System.nanoTime();
+
+        // Call the function to find the minimum
         int min = findMin(array, n);
 
-        // Print the result
+        // End time after the function runs
+        long endTime = System.nanoTime();
+
+        // Calculate duration in milliseconds
+        double duration = (endTime - startTime) / 1_000_000.0;
+
+        // Output results
         System.out.println("Minimum element is: " + min);
+        System.out.println("Time taken: " + duration + " milliseconds");
     }
 }
